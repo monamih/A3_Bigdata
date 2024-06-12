@@ -51,12 +51,12 @@ print('Amostras do dataset:')
 print(df.head())
 
 # Escrever dados no arquivo CSV com um delimitador melhor
-df.to_csv('produtos.csv', index=False, encoding='utf-8', sep=';')
+df.to_csv('13_06_2024_A3_grupo_N.csv', index=False, encoding='utf-8', sep=';')
 
 # Criar e formatar o arquivo Excel
 wb = Workbook()
 ws = wb.active
-ws.title = "Produtos"
+ws.title = "13_06_2024_A3_grupo_N"
 
 # Adicionar os dados ao arquivo Excel
 for r in dataframe_to_rows(df, index=False, header=True):
