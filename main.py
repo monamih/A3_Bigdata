@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from openpyxl import Workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.styles import Alignment
+import datetime
 
 def scrape_mercadolivre(url):
     response = requests.get(url)
@@ -51,12 +52,14 @@ print('Amostras do dataset:')
 print(df.head())
 
 # Escrever dados no arquivo CSV com um delimitador melhor
-df.to_csv('13_06_2024_A3_grupo_N.csv', index=False, encoding='utf-8', sep=';')
+date_today = datetime.date.today().strftime("%d_%m_%Y")
+file_name_csv = f"ISMAEL_DIEGO_FELIPE_UERBERT_{date_today}.csv"
+df.to_csv(file_name_csv, index=False)
 
 # Criar e formatar o arquivo Excel
 wb = Workbook()
 ws = wb.active
-ws.title = "13_06_2024_A3_grupo_N"
+ws.title = "ISMAEL_DIEGO_FELIPE_UERBERT"
 
 # Adicionar os dados ao arquivo Excel
 for r in dataframe_to_rows(df, index=False, header=True):
@@ -81,7 +84,7 @@ for row in ws.iter_rows():
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
 # Salvar o arquivo Excel
-wb.save("produtos.xlsx")
+wb.save("ISMAEL_DIEGO_FELIPE_UERBERT.xlsx")
 
 # Calcular estatísticas
 mean_discount = df['Desconto'].mean()
